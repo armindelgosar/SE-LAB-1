@@ -7,4 +7,6 @@ class DelayServiceData:
     order_id: int
 
 
-
+@dataclasses.dataclass
+class AgentServiceData:
+    agent_id: int

@@ -6,3 +6,5 @@ class DelayReportSerializer(serializers.Serializer):
     order_id = serializers.IntegerField()
 
 
+class AgentAssignSerializer(serializers.Serializer):
+    agent_id = serializers.IntegerField()

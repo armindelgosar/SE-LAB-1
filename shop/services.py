@@ -60,3 +60,32 @@ class DelayReportService(BaseService):
         if hasattr(order, 'trip') and order.trip.status in (TripStatus.PICKED, TripStatus.ASSIGNED, TripStatus.AT_VENDOR):
             return self.update_order_duration(order, user_name)
         return self.add_order_to_queue(order, user_name)
+
+
+class AgentAssignService(BaseService):
+    dataclass = AgentServiceData
+
+    def get_order_from_queue(self):
+        if DelayQueueItem.objects.count() == 0:
+            raise AgentAssignException('queue is empty')
+        queue_item = DelayQueueItem.objects.first()
+        order = queue_item.order
+        queue_item.delete()
+        return order
+
+    def process(self, **kwargs):
+        data = self.validate_data(kwargs)
+        agent_id = data.agent_id
+        agent = Agent.objects.filter(id=agent_id)
+        if not agent.exists():
+            raise AgentAssignException('agent doesn\'t exist')
+        agent = agent.first()
+        if agent.order:
+            raise AgentAssignException('agent is already assigned')
+        order = self.get_order_from_queue()
+        agent.order = order
+        agent.save()
+        return {'assigned_order_id': order.id}
+
+
+

@@ -21,3 +21,19 @@ class DelayReportView(APIView):
         return Response(status=201, data=result)
 
 
+class AgentAssignView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        data = request.GET
+        serializer = AgentAssignSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+        service = AgentAssignService()
+        try:
+            result = service.process(**validated_data)
+        except AgentAssignException as e:
+            return Response(str(e), status=400)
+        return Response(status=200, data=result)
+
+
+
