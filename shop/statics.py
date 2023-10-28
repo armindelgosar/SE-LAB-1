@@ -6,10 +6,10 @@ class TripStatus:
 
 
 TRIP_STATUS_CHOICES = [
-    TripStatus.DELIVERED,
-    TripStatus.PICKED,
-    TripStatus.ASSIGNED,
-    TripStatus.AT_VENDOR,
+    (TripStatus.DELIVERED, TripStatus.DELIVERED),
+    (TripStatus.PICKED, TripStatus.PICKED),
+    (TripStatus.ASSIGNED, TripStatus.ASSIGNED),
+    (TripStatus.AT_VENDOR, TripStatus.AT_VENDOR),
 ]
 
 
@@ -19,6 +19,6 @@ class DelayReportResult:
 
 
 DELAY_REPORT_RESULT_CHOICES = [
-    DelayReportResult.ADDED_TO_DELAY_QUEUE,
-    DelayReportResult.DURATION_UPDATED,
+    (DelayReportResult.ADDED_TO_DELAY_QUEUE, DelayReportResult.ADDED_TO_DELAY_QUEUE),
+    (DelayReportResult.DURATION_UPDATED, DelayReportResult.DURATION_UPDATED),
 ]
