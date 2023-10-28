@@ -10,7 +10,6 @@ class VendorAdmin(admin.ModelAdmin):
         'name',
     )
 
-
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
@@ -18,3 +17,4 @@ class OrderAdmin(admin.ModelAdmin):
         'delivery_duration',
         'delivery_time',
     )
+    
