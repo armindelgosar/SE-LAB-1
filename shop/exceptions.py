@@ -1,0 +1,4 @@
+class DelayReportException(Exception):
+    pass
+
+
