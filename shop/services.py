@@ -88,4 +88,10 @@ class AgentAssignService(BaseService):
         return {'assigned_order_id': order.id}
 
 
+class DelaySummaryService(BaseService):
 
+    def process(self, **kwargs):
+        data = DelayReport.objects.values('order__vendor_id', 'order__vendor__name').annotate(
+            count=Count('*')
+        ).values('count', 'order__vendor_id', 'order__vendor__name').order_by('-count')
+        return data

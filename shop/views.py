@@ -36,4 +36,9 @@ class AgentAssignView(APIView):
         return Response(status=200, data=result)
 
 
+class DelaySummaryView(APIView):
 
+    def get(self, request, *args, **kwargs):
+        service = DelaySummaryService()
+        result = service.process()
+        return Response(status=200, data=result)
