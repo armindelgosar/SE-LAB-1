@@ -27,9 +27,9 @@ class Trip(BaseModel):
 class DelayReport(BaseModel):
     name = models.CharField(max_length=16)
     result = models.CharField(max_length=32, choices=DELAY_REPORT_RESULT_CHOICES)
-    trip = models.ForeignKey(to=Vendor, on_delete=models.CASCADE, related_name="orders")
+    trip = models.ForeignKey(to=Vendor, on_delete=models.CASCADE, related_name="delay_reports")
 
 
 class DelayQueueItem(BaseModel):
-    order = models.ForeignKey(to=Order, on_delete=models.CASCADE, related_name="agent", null=True)
+    order = models.ForeignKey(to=Order, on_delete=models.CASCADE, related_name="queue_item", null=True)
 
