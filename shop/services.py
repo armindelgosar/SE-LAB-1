@@ -1,5 +1,6 @@
 import abc
 from datetime import datetime, timedelta
+from random import random, randint
 
 import pytz
 import requests
@@ -25,16 +26,18 @@ class DelayReportService(BaseService):
     dataclass = DelayServiceData
 
     def get_new_delivery_duration(self):
+        # THIS FUNCTION IS COMMENTED FOR API ISSUE #
         # result = requests.get('https://run.mocky.io/v3/122c2796-5df4-461c-ab75-87c1192b17f7').json()
         # return result['delivery_duration']
-        return timedelta(seconds=10)
+        return timedelta(seconds=randint(10, 60))
 
     def update_order_duration(self, order, user_name):
         delivery_duration = self.get_new_delivery_duration()
         order.delivery_duration = delivery_duration
         order.delivery_time = order.created + order.delivery_duration
         order.save()
-        DelayReport.objects.create(name=user_name, trip=order.trip, result=DelayReportResult.DURATION_UPDATED, order=order)
+        DelayReport.objects.create(name=user_name, trip=order.trip, result=DelayReportResult.DURATION_UPDATED,
+                                   order=order)
         return {"result": f"delivery duration updated to {delivery_duration}"}
 
     def add_order_to_queue(self, order, user_name):
@@ -57,7 +60,8 @@ class DelayReportService(BaseService):
             raise DelayReportException('order doesn\'t exist')
         order = order.first()
         self.check_order_delivery_time(order)
-        if hasattr(order, 'trip') and order.trip.status in (TripStatus.PICKED, TripStatus.ASSIGNED, TripStatus.AT_VENDOR):
+        if hasattr(order, 'trip') and order.trip.status in (
+                TripStatus.PICKED, TripStatus.ASSIGNED, TripStatus.AT_VENDOR):
             return self.update_order_duration(order, user_name)
         return self.add_order_to_queue(order, user_name)
 
