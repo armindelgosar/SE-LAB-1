@@ -35,3 +35,9 @@ It is developed using *Django* framework besides *sqlite* database.
    - `hooks`: Running Scripts at Specific Points in the Git Workflow
 
 2. `Atomic` in commit means all changes in a single commit should happen together. This means if one of the changes in a commit fails this causes all the commit fail. So we need to have an aggregated consistency. This principle is also works for each PR. PR is a group of commits in which all of its commits should be consistent and successful.
+3. Here are the definitions and the differences:
+`merge`: Merging creates a new commit that incorporates the changes from the specified branch into the current branch.
+`rebase`: Rebase integrates the changes of one branch onto another, making the branch history linear and potentially avoiding unnecessary merge commits. So it doesn't have a commit for merging like `merge`
+`cherry-pick`: Cherry-picking allows you to select specific commits and apply them onto the current branch, useful for picking individual changes without merging entire branches. So it is not working with branches, it is for cases when we need to work with an specific commit.
+`fetch`: Fetch retrieves changes from a remote repository without merging them into your local branch. It updates your local knowledge of remote branches.
+`pull`: Pull combines the fetch and merge steps, updating your local branch with changes from a remote branch with merge commit.
