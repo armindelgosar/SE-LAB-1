@@ -46,6 +46,7 @@ It is developed using *Django* framework besides *sqlite* database.
 `fetch`: Fetch retrieves changes from a remote repository without merging them into your local branch. It updates your local knowledge of remote branches.
 
 `pull`: Pull combines the fetch and merge steps, updating your local branch with changes from a remote branch with merge commit.
+
 4. Here are the definitions and the differences:
 
 `reset`: A powerful command that resets the working directory to a specific commit. Updates the current branch and the commit history as well.(It is recommended to use this command to undo uncommitted changes)
@@ -53,7 +54,9 @@ It is developed using *Django* framework besides *sqlite* database.
 `revert`: Similar to `reset` though the only difference is that it creates a new commit for every revert operation.(It is recommended to use this command to undo committed changes)
 
 `restore`: Restore files in the working tree from the index (the staging area where all git add-ed files reside) or another commit.(This command does not update your branch)
+
 5. Git stage area is where you add the files(or changes) that you are going to commit. This allows you to choose which changed files you include in your commit.\
 
 Git stash temporarily shelves (or stashes) changes you've made to your working copy so you can work on something else, and then come back and re-apply them later on. Stashing is handy if you need to quickly switch context and work on something else, but you're mid-way through a code change and aren't quite ready to commit. You can restore these changes later with `git stash pop`.
+
 6. A snapshot is the state of something (e.g. a folder) at a specific point in time. Each commit in git contains snapshot of the whole repository(instead of just saving changes)
