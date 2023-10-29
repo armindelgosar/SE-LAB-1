@@ -24,7 +24,8 @@ class BaseService(abc.ABC):
 class DelayReportService(BaseService):
     dataclass = DelayServiceData
 
-    def get_new_delivery_duration(self):
+    @staticmethod
+    def get_new_delivery_duration():
         # result = requests.get('https://run.mocky.io/v3/122c2796-5df4-461c-ab75-87c1192b17f7').json()
         # return result['delivery_duration']
         return timedelta(seconds=10)
@@ -37,14 +38,16 @@ class DelayReportService(BaseService):
         DelayReport.objects.create(name=user_name, trip=order.trip, result=DelayReportResult.DURATION_UPDATED, order=order)
         return {"result": f"delivery duration updated to {delivery_duration}"}
 
-    def add_order_to_queue(self, order, user_name):
+    @staticmethod
+    def add_order_to_queue(order, user_name):
         if DelayQueueItem.objects.filter(order=order).exists():
             raise DelayReportException('order is already in delay queue')
         DelayQueueItem.objects.create(order=order)
         DelayReport.objects.create(name=user_name, result=DelayReportResult.ADDED_TO_DELAY_QUEUE, order=order)
         return {"result": "Added to delay queue"}
 
-    def check_order_delivery_time(self, order):
+    @staticmethod
+    def check_order_delivery_time(order):
         if order.delivery_time >= datetime.now(tz=pytz.UTC):
             raise DelayReportException('order is not delayed')
 
@@ -65,7 +68,8 @@ class DelayReportService(BaseService):
 class AgentAssignService(BaseService):
     dataclass = AgentServiceData
 
-    def get_order_from_queue(self):
+    @staticmethod
+    def get_order_from_queue():
         if DelayQueueItem.objects.count() == 0:
             raise AgentAssignException('queue is empty')
         queue_item = DelayQueueItem.objects.first()
