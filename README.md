@@ -34,4 +34,4 @@ It is developed using *Django* framework besides *sqlite* database.
    - `hooks`: Running Scripts at Specific Points in the Git Workflow
    - `hooks`: Running Scripts at Specific Points in the Git Workflow
 
-2. 
+2. `Atomic` in commit means all changes in a single commit should happen together. This means if one of the changes in a commit fails this causes all the commit fail. So we need to have an aggregated consistency. This principle is also works for each PR. PR is a group of commits in which all of its commits should be consistent and successful.
