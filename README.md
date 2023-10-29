@@ -23,3 +23,21 @@ It is developed using *Django* framework besides *sqlite* database.
 <img width="1321" alt="Screen Shot 1402-08-07 at 16 10 38" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/63072483-26c4-4ea9-95a4-f1a8705059e2">
 6. We created PR(pull request) in order to add different features to the main branches.
 <img width="1093" alt="Screen Shot 1402-08-07 at 16 09 03" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/620fb5ae-5b3e-4626-ae7c-da8d4ecfa5b2">
+
+
+### Extra Questions
+1. `.git` directory contains all config files which git needs regarding the project repository. Here we've mentioned some of them:
+   - `head`: Keeping Track of Your Current Branch
+   - `refs`: Storing References to Commits and Branches
+   - `objects`: Storing Your Codebase as a Series of Snapshots
+   - `config`: Storing Configuration Information for Git
+   - `hooks`: Running Scripts at Specific Points in the Git Workflow
+   - `hooks`: Running Scripts at Specific Points in the Git Workflow
+
+2. `Atomic` in commit means all changes in a single commit should happen together. This means if one of the changes in a commit fails this causes all the commit fail. So we need to have an aggregated consistency. This principle is also works for each PR. PR is a group of commits in which all of its commits should be consistent and successful.
+3. Here are the definitions and the differences:
+`merge`: Merging creates a new commit that incorporates the changes from the specified branch into the current branch.
+`rebase`: Rebase integrates the changes of one branch onto another, making the branch history linear and potentially avoiding unnecessary merge commits. So it doesn't have a commit for merging like `merge`
+`cherry-pick`: Cherry-picking allows you to select specific commits and apply them onto the current branch, useful for picking individual changes without merging entire branches. So it is not working with branches, it is for cases when we need to work with an specific commit.
+`fetch`: Fetch retrieves changes from a remote repository without merging them into your local branch. It updates your local knowledge of remote branches.
+`pull`: Pull combines the fetch and merge steps, updating your local branch with changes from a remote branch with merge commit.
