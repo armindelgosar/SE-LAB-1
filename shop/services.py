@@ -31,7 +31,7 @@ class DelayReportService(BaseService):
         # return result['delivery_duration']
         return timedelta(seconds=randint(10, 60))
 
-    def update_order_duration(self, order, user_name):
+    def update_order_duration(self, order: Order, user_name: str):
         delivery_duration = self.get_new_delivery_duration()
         order.delivery_duration = delivery_duration
         order.delivery_time = order.created + order.delivery_duration
@@ -40,14 +40,14 @@ class DelayReportService(BaseService):
                                    order=order)
         return {"result": f"delivery duration updated to {delivery_duration}"}
 
-    def add_order_to_queue(self, order, user_name):
+    def add_order_to_queue(self, order: Order, user_name: str):
         if DelayQueueItem.objects.filter(order=order).exists():
             raise DelayReportException('order is already in delay queue')
         DelayQueueItem.objects.create(order=order)
         DelayReport.objects.create(name=user_name, result=DelayReportResult.ADDED_TO_DELAY_QUEUE, order=order)
         return {"result": "Added to delay queue"}
 
-    def check_order_delivery_time(self, order):
+    def check_order_delivery_time(self, order: Order):
         if order.delivery_time >= datetime.now(tz=pytz.UTC):
             raise DelayReportException('order is not delayed')
 
