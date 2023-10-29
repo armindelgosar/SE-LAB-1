@@ -9,7 +9,7 @@ It is developed using *Django* framework besides *sqlite* database.
 
 1. Here is the project overview which has two main branches:
    `master`, and `main ` and we used the `feat/[FEATURE_NAME]` pattern to create feature branches.
-![overview pic](<img width="1321" alt="Screen Shot 1402-08-07 at 16 26 57" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/161cee1c-2682-4ca1-a00b-36dceba2b832">)
+!(<img width="1321" alt="Screen Shot 1402-08-07 at 16 26 57" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/161cee1c-2682-4ca1-a00b-36dceba2b832">)
 2. We've added a `.gitignore` file to ignore different directories like cache files and venv dir.
 ![overview pic](<img width="1093" alt="Screen Shot 1402-08-07 at 16 07 15" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/5d19f012-3e39-4c2a-888d-9dc7c201e2b5">)
 3. We generated some conflict scenarios to handle them using git cmd .e.g there were two branches for refactoring and reformatting and we had to merge them both in dev so there were some conflicts which we resolved and they're shown in screenshots below.
