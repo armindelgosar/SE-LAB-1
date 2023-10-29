@@ -23,3 +23,15 @@ It is developed using *Django* framework besides *sqlite* database.
 <img width="1321" alt="Screen Shot 1402-08-07 at 16 10 38" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/63072483-26c4-4ea9-95a4-f1a8705059e2">
 6. We created PR(pull request) in order to add different features to the main branches.
 <img width="1093" alt="Screen Shot 1402-08-07 at 16 09 03" src="https://github.com/armindelgosar/SE-LAB-1/assets/60629485/620fb5ae-5b3e-4626-ae7c-da8d4ecfa5b2">
+
+
+### Extra Questions
+1. `.git` directory contains all config files which git needs regarding the project repository. Here we've mentioned some of them:
+   - `head`: Keeping Track of Your Current Branch
+   - `refs`: Storing References to Commits and Branches
+   - `objects`: Storing Your Codebase as a Series of Snapshots
+   - `config`: Storing Configuration Information for Git
+   - `hooks`: Running Scripts at Specific Points in the Git Workflow
+   - `hooks`: Running Scripts at Specific Points in the Git Workflow
+
+2. 
